@@ -1,38 +1,6 @@
 import random
 import sys
 
-def roll():
-    d100 = random.randint(1, 100)
-    print(d100)
-    if d100 == 11:
-        print("Random Event")
-        event()
-    elif d100 == 22:
-        print("Random Event")
-        event()
-    elif d100 == 33:
-        print("Random Event")
-        event()
-    elif d100 == 44:
-        print("Random Event")
-        event()
-    elif d100 == 55:
-        print("Random Event")
-        event()
-    elif d100 == 66:
-        print("Random Event")
-        event()
-    elif d100 == 77:
-        print("Random Event")
-        event()
-    elif d100 == 88:
-        print("Random Event")
-        event()
-    elif d100 == 99:
-        print("Random Event")
-        event()
-    return
-
 def menu():
     print("""
     What would you like to know?
@@ -76,7 +44,6 @@ def menu():
     return
 
 def likely():
-    d100 = random.randint (1, 100)
     print("""
     How Likely?
     1. 50/50
@@ -84,20 +51,46 @@ def likely():
     3. Very unlikely
     """)
     likely = input(">")
+    d100 = random.randint(1, 100)
+    print(d100)
+    if d100 == 11:
+        print("Random Event")
+        event()
+    elif d100 == 22:
+        print("Random Event")
+        event()
+    elif d100 == 33:
+        print("Random Event")
+        event()
+    elif d100 == 44:
+        print("Random Event")
+        event()
+    elif d100 == 55:
+        print("Random Event")
+        event()
+    elif d100 == 66:
+        print("Random Event")
+        event()
+    elif d100 == 77:
+        print("Random Event")
+        event()
+    elif d100 == 88:
+        print("Random Event")
+        event()
+    elif d100 == 99:
+        print("Random Event")
+        event()
     if likely == "1":
-        roll()
         if d100 < 51:
             print("Yes.")
         elif d100 > 50:
             print("No.")
     elif likely == "2":
-        roll()
         if d100 < 76:
             print("Yes.")
         elif d100 > 75:
             print("No.")
     elif likely == "3":
-        roll()
         if d100 < 26:
             print("Yes.")
         elif d100 > 25:
@@ -314,9 +307,7 @@ def npcdiscussion():
 menu()
 
 ##Things to add
-##in oracle; pass d100 from one function to other
 ##NPC binary response
 ##location charts
 ##more mythic liklinesses
 ##alternative mythic templates?
-##"yes, and" or automatically generate events
