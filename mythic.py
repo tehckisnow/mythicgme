@@ -11,7 +11,8 @@ def menu():
     5. NPC
     6. NPC(Binary question)
     7. NPC(Conversation)
-    8. Exit
+    8. Dice
+    9. Exit
     """)
     usrchoice = input(">")
     #print(usrchoice + " selected")
@@ -37,6 +38,8 @@ def menu():
         npcdiscussion()
         menu()
     elif usrchoice == "8":
+        dice()
+    elif usrchoice == "9":
         sys.exit(0)
     else:
         print("Shiggity Schwa?")
@@ -328,6 +331,15 @@ def npcdiscussion():
     rndbearing = random.randint(0, ln0)
     rndfocus = random.randint(0, ln1)
     print(bearing[rndbearing] + " " + focus[rndfocus])
+
+def dice():
+    d10 = random.randint(1, 10)
+    d10a = random.randint(1, 10)
+    d10b = random.randint(1, 10)
+    d20 = random.randint(1, 20)
+    d100 = random.randint(1, 100)
+    print("1D10:",d10," 2D10:",d10a+d10b," D20:",d20," 1D100:",d100)
+    menu()
 
 menu()
 
