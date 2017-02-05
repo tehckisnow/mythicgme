@@ -31,7 +31,7 @@ def menu():
         npc()
         menu()
     elif usrchoice == "6":
-        npcbinary()
+        NPCbin()
         menu()
     elif usrchoice == "7":
         npcdiscussion()
@@ -41,7 +41,6 @@ def menu():
     else:
         print("Shiggity Schwa?")
         menu()
-    return
 
 def likely():
     print("""
@@ -95,7 +94,6 @@ def likely():
             print("Yes.")
         elif d100 > 25:
             print("No.")
-    return
 
 def event():
     d100 = random.randint (1, 100)
@@ -111,7 +109,6 @@ def event():
     d10c = random.randint (0, ln2)
     print(eventfocus[d10a])
     print(action[d10b], subject[d10c])
-    return
 
 def location():
     typelst=["custom", "expected", "none", "special", "random", "complete"]
@@ -139,7 +136,6 @@ def location():
         d10b = random.randint (0, ln1)
         print("*" + speciallst[d10b])
     event()
-    return
 
 def creature():
     typelst=["alien", "animal", "animated", "elemental", "humanoid", "supernatural beast", "amorphous", "plant", "undead", "insect"]
@@ -237,7 +233,6 @@ def creature():
         print("description: " + insectlst[rndinsect])
         rndinsect = random.randint(0, ln14)
         print(insectlst[rndinsect])
-    return
 
 def npc():
     mod=["superfluous", "addicted", "conformist", "nefarious", "sensible", "untrained", "romantic", "unreasonable", "skilled", "neglectful", "lively", "forthright", "idealistic", "unsupportive", "rational", "course", "foolish", "cunning", "delightful", "miserly", "inept", "banal", "logical", "subtle", "reputable", "wicked", "lazy", "pessemistic", "solemn", "habitual", "meek", "helpful", "unconcerned", "generous", "docile", "cheery", "pragmatic", "serene", "thoughtful", "hopeless", "pleasant", "insensitive", "inexperienced", "prying", "oblivious", "refined", "indispensible", "scholarly", "conservative", "uncouth", "willful", "indifferent", "fickle", "elderly", "sinful", "naive", "privileged", "glum", "likable", "lethargic", "defiant", "obnoxious", "insightful", "tactless", "fanatic", "plebian", "childish", "pious", "uneducated", "inconsiderate", "cultured", "revolting", "curious", "touchy", "needy", "dignified", "pushy", "kind", "corrupt", "jovial", "shrewd", "liberal", "compliant", "destitute", "conniving", "careful", "alluring", "defective", "optimistic", "affluent", "despondent", "mindless", "passionate", "devoted", "established", "unseemly", "dependable", "righteous", "confident"]
@@ -262,12 +257,18 @@ def npc():
     print("NPC: " + mod[rndmod] + " " + noun[rndnoun])
     print("power level: " + pwrlvl[rndpwrlvl])
     print("motivation: " + motive[rndmotive] + " " + motivnoun[rndmotivnoun])
-    return
 
-def npcbinary():
-    print("NPC response: ")
+def NPCbin():
+    ##              withdrawn   guarded     cautious     neutral        sociable    helpful     forthcoming
+    reactions = [[[5, 30, 87], [9, 45, 90], [12, 60, 93], [15, 75,95], [18, 81, 96], [21, 88, 97], [25, 95, 99]],   #loved
+                 [[4, 25, 85], [8, 38, 88], [10, 51, 91], [13, 64, 93], [16, 73, 94], [19, 82, 96], [23, 91, 98]],  #friendly
+                 [[4, 21, 83], [7, 33, 86], [9, 45, 89], [11, 56, 91], [14, 65, 93], [17, 76, 95], [21, 87, 98]],   #peaceful
+                 [[3, 17, 81], [6, 28, 84], [8, 39, 87], [10, 50, 90], [13, 61, 92], [16, 72, 94], [19, 83, 97]],   #neutral
+                 [[2, 13, 79], [5, 24, 83], [7, 35, 86], [9, 44, 89], [11, 55, 91], [14, 67, 93], [17, 79, 96]],    #distrustful
+                 [[2, 9, 77], [4, 18, 81], [6, 27, 84], [7, 36, 87], [9, 49, 90], [12, 62, 92], [15, 75, 96]],      #hostile
+                 [[1, 5, 75], [3, 12, 79], [4, 19, 82], [5, 25, 85], [7,40,88], [10, 55, 91], [13, 70, 95]]]        #hated
+    print("Relationship to NPC?")
     print("""
-    Relationship to NPC?
     1. loved
     2. friendly
     3. peaceful
@@ -276,9 +277,10 @@ def npcbinary():
     6. hostile
     7. hated
     """)
-    npcrelat = input(">")
-    print("""
-    NPC mood?
+    try:
+        rel=int(input(">"))-1
+        print("Mood of NPC?")
+        print("""
     1. withdrawn
     2. guarded
     3. cautious
@@ -286,11 +288,23 @@ def npcbinary():
     5. sociable
     6. helpful
     7. forthcoming
-    """)
-    npcmood = input(">")
-
-    print(npcrelat +npcmood)
-    return
+        """)
+        mood=int(input(">"))-1
+        odds=reactions[rel][mood]
+        low, med, high = 0,1,2
+        d100 = random.randint (1, 100)
+        print("d100: ", d100)
+        if d100 <= odds[low]:
+            print("Strong yes!")
+        elif d100 <= odds[med]:
+            print("Yes.")
+        elif d100 >= odds[high]:
+            print("Strong no!")
+        elif d100 > odds[med]:
+            print("No.")
+    except(ValueError):
+        print("Please enter a value between 1 and 7")
+        NPCbin()
 
 def npcdiscussion():
     bearing=["scheming", "intent", "bargain", "means", "proposition", "plan", "compromise", "agenda", "arrangement", "negotiation", "plot", "inquisitive", "questions", "investigation", "interest", "demand", "suspicion", "request", "curiosity", "skepticism", "command", "petition", "insane", "madness", "fear", "accident", "chaos", "idiocy", "illusion", "turmoil", "confusion", "façade", "bewilderment", "knowing", "report", "effects", "examination", "records", "account", "news", "history", "telling", "discourse", "speech", "friendly", "alliance", "comfort", "gratitude", "shelter", "happiness", "support", "promise", "delight", "aid", "celebration", "mysterious", "rumor", "uncertainty", "secrets", "misdirection", "whispers", "lies", "shadows", "enigma", "obscurity", "conundrum", "hostile", "death", "capture", "judgment", "combat", "surrender", "rage", "resentment", "submission", "injury", "destruction", "prejudiced", "reputation", "doubt", "bias", "dislike", "partiality", "belief", "view", "discrimination", "assessment", "difference"]
@@ -302,7 +316,6 @@ def npcdiscussion():
     rndbearing = random.randint(0, ln0)
     rndfocus = random.randint(0, ln1)
     print(bearing[rndbearing] + " " + focus[rndfocus])
-    return
 
 menu()
 
