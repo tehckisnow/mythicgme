@@ -155,7 +155,7 @@ def location():
 def creature():
     typelst=["alien", "animal", "animated", "elemental", "humanoid", "supernatural beast", "amorphous", "plant", "undead", "insect"]
     potencylst=["minimum(-75%)", "weak(-50%)", "less(-10%)", "baseline average", "more(+10%)", "stronge(+50%)", "maximum(+100)"]
-    sizelst=["tiny", "small", "human-sized", "large" "very horns/antlers", "gm decisionlarg.e", "gigantic"]
+    sizelst=["tiny", "small", "human-sized", "large", "very large", "gm decision", "gigantic"]
     numberoflst=["1", "2", "3", "4", "5", "6 or more"]
     abilitylst=["no special ability", "gaze attack", "resist damage", "burst of speed", "flight", "swim", "enhanced sense", "concealment", "paralysis", "natural weaponry", "climber", "poison", "charge", "distraction", "entangle", "specific vulnerability", "unusual sense", "extra defense", "telepathy", "limited use", "grievous attack", "summon", "immunity", "tunnelling", "targeted attack", "meta power", "ranged attack", "alternate form of travel", "frightening", "life force drain", "fast healing", "attribute damage", "dual classification", "defensive perimeter", "incorporeal", "animate", "multi-enironment", "tranformation"]
     alienlst=["fishlike", "stinky", "tentacled", "roll on animal table", "extra limbs", "clothed", "nightmarish", "multi-eyed", "dripping", "roll on beast table", "levitating", "insectlike", "roll on insect table", "wormlike", "humanoid looking", "bony", "odd colored", "serpent-like", "aquatic", "gm decision"]
